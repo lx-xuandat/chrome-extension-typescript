@@ -21,8 +21,14 @@ export default defineManifest({
   },
   content_scripts: [
     {
-      matches: ['http://*/*', 'https://*/*'],
-      js: ['src/index.tsx'],
+      matches: [
+        "https://*.1688.com/*",
+        "https://*.taobao.com/*",
+        "https://*.tmall.com/*",
+        "https://*.tmall.hk/*"
+      ],
+      js: ['src/app.tsx'],
+      run_at: 'document_idle',
     },
   ],
   web_accessible_resources: [
@@ -34,5 +40,5 @@ export default defineManifest({
   permissions: ['storage'],
   chrome_url_overrides: {
     newtab: 'index.html',
-  },
+  }
 })
